@@ -15,7 +15,6 @@ class SettingsScreen extends React.Component {
           onChange={this.props.onMaxValue}
           onClick={this.props.onClickCounterValue}
           errorMax={this.props.errorMax}
-          borderError={this.props.borderError}
         />
         <span className='minValueString' > <em> min value: </em></span>
         <input className={classIncorrectMinValueInput} type="number"
@@ -23,7 +22,6 @@ class SettingsScreen extends React.Component {
           onChange={this.props.onMinValue}
           onClick={this.props.onClickCounterValue}
           errorMin={this.props.errorMin}
-          borderError={this.props.borderError}
         />
       </div>
     );

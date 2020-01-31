@@ -54,6 +54,7 @@ class App extends React.Component {
   //при клике на set значение выбранного мин значения перебрасывается на screen
 
   onSet = () => {
+
     let newMinValue = this.state.minValue
     this.setState({
       counter: newMinValue, isButtonInc: false, isButtonReset: false, isCounterSet:false,currentDisplaySettings: true,currentDisplay: false
@@ -109,7 +110,6 @@ onSetCounter = () => {
           onClickCounterValue={this.onClickCounterValue}
           errorMax={this.state.errorMax}
           errorMin={this.state.errorMin}
-          emptyValue={this.emptyValue}
           isButtonSet={this.state.isButtonSet}
           currentDisplaySettings={this.state.currentDisplaySettings}
         />
