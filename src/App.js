@@ -14,13 +14,13 @@ class App extends React.Component {
   state = {
     maxValue: 0,
     minValue: 0,
-    counter: "Enter value and press 'Set'",
-    isButtonInc: false,
+    counter: "Press 'SetVal'",
+    isButtonInc: true,
     numberNewColor: false,
     errorMax: false,
     errorMin: false,
     isButtonSet: false,
-    isButtonReset: false,
+    isButtonReset: true,
     currentDisplaySettings: true,
     currentDisplay: false,
     isCounterSet:false
@@ -30,14 +30,14 @@ class App extends React.Component {
   onInc = () => {
     this.setState({ counter: ++this.state.counter }, () => {
       if (this.state.counter === this.state.maxValue) {
-        this.setState({ isButtonInc: true, numberNewColor: true }, () => {this.saveState()})
+        this.setState({ isButtonInc: true,    isButtonReset: false, numberNewColor: true }, () => {this.saveState()})
       }
     })
   };
 
   //сбрасывает при достижении макс значения 
   onReset = () => {
-    this.setState({ counter: this.state.minValue, isButtonInc: false, numberNewColor: false }, () => {this.saveState()})
+    this.setState({ counter: this.state.minValue, isButtonInc: false, numberNewColor: false,isButtonReset: false}, () => {this.saveState()})
   };
 
   //событие с мин и макс значениями
@@ -52,18 +52,17 @@ class App extends React.Component {
     }, () => {this.saveState()});
   };
   //при клике на set значение выбранного мин значения перебрасывается на screen
-
   onSet = () => {
 
     let newMinValue = this.state.minValue
     this.setState({
-      counter: newMinValue, isButtonInc: false, isButtonReset: false, isCounterSet:false,currentDisplaySettings: true,currentDisplay: false
+      counter: newMinValue, isButtonInc: false, isButtonReset: true, isCounterSet:false,currentDisplaySettings: true,currentDisplay: false
     }, () => {this.saveState()} )
   };
   //меняется значение сетчика, в том числе при некорректном вводе. Так же блокируются кновки inc,reset
   onClickCounterValue = () => {
     this.setState({
-      counter: "Enter value and press 'Set'", errorMax: false, errorMin: false, isButtonSet: false, isButtonInc: true, isButtonReset: true,isCounterSet:true
+      counter: "Press 'SetVal'", errorMax: false, errorMin: false, isButtonSet: false, isButtonInc: true, isButtonReset: true,isCounterSet:true
     }, () => {this.saveState()});
     if (this.state.maxValue <= -1) {
       this.setState({
